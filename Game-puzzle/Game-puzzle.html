@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game puzzle</title>
+    <style type="text/css">
+        .image {
+        }
+    </style>
+</head>
+<body>
+    <img id="1" class="image" name="img" src="imgs/1.png" style="height: 250px; width: 234px" onclick="changeImg(this.id);check();">
+    <img id="2" class="image" name="img" src="imgs/2.png" style="height: 250px; width: 236px" onclick="changeImg(this.id);check();">
+    <img id="3" class="image" name="img" src="imgs/3.png" style="height: 250px; width: 240px" onclick="changeImg(this.id);check();">
+    <img id="4" class="image" name="img" src="imgs/4.png" style="height: 250px; width: 232px" onclick="changeImg(this.id);check();">
+    <img id="5" class="image" name="img" src="imgs/5.png" style="height: 250px; width: 205px" onclick="changeImg(this.id);check();">
+
+    <script>
+        //let randomNum = Math.floor(Math.random()*5)+1; // chỉ tạo ra 1 số random, không cho vào mảng được
+        let imgRandomArray = [Math.floor(Math.random()*5)+1,Math.floor(Math.random()*5)+1,Math.floor(Math.random()*5)+1,
+            Math.floor(Math.random()*5)+1,Math.floor(Math.random()*5)+1];
+        displayImg();
+        function displayImg(){
+            for (i = 0; i<=imgRandomArray.length-1; i++){
+                document.getElementById((i+1).toString()).src = "imgs/" + imgRandomArray[i] + ".png";
+            }
+        }
+        function changeImg(id) {
+            let src = document.getElementById(id).src = "imgs/" + (Math.floor(Math.random()*5)+1) + ".png";
+            let cutSrc = src.substring(src.length-5, src.length-4);
+            let changeName = document.getElementById(id).name = "img" + cutSrc;
+        }
+        function check() {
+            if (document.getElementById("1").name == "img1" &&
+                document.getElementById("2").name == "img2" &&
+                document.getElementById("3").name == "img3" &&
+                document.getElementById("4").name == "img4" &&
+                document.getElementById("5").name == "img5"){
+                alert("ting ting");
+            }
+        }
+    </script>
+</body>
+</html>
